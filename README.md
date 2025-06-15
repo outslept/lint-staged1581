@@ -1,3 +1,4 @@
+```
 clk: ~3.87 GHz
 cpu: 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
 runtime: node 23.5.0 (x64-win32)
@@ -74,3 +75,4 @@ summary
   suggestion (100k)
    1.02x faster than newFromPr (100k)
    6.8x faster than old (100k)
+```
