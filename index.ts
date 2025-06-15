@@ -47,72 +47,33 @@ const suggestion = (files: File[]) => {
   return files.reduce((totalLength, file) => totalLength + file.filepath.length, 0) + (files.length - 1)
 }
 
+const files100 = createFiles(100)
+const files1k = createFiles(1000)
+const files10k = createFiles(10000)
+const files100k = createFiles(100000)
+
 summary(() => {
-  bench('old (100)', function* () {
-    const files = createFiles(100)
-    yield () => do_not_optimize(old(files))
-  })
-
-  bench('newFromPr (100)', function* () {
-    const files = createFiles(100)
-    yield () => do_not_optimize(newFromPr(files))
-  })
-
-  bench('suggestion (100)', function* () {
-    const files = createFiles(100)
-    yield () => do_not_optimize(suggestion(files))
-  })
+  bench('old (100)', () => do_not_optimize(old(files100)))
+  bench('newFromPr (100)', () => do_not_optimize(newFromPr(files100)))
+  bench('suggestion (100)', () => do_not_optimize(suggestion(files100)))
 })
 
 summary(() => {
-  bench('old (1k)', function* () {
-    const files = createFiles(1000)
-    yield () => do_not_optimize(old(files))
-  })
-
-  bench('newFromPr (1k)', function* () {
-    const files = createFiles(1000)
-    yield () => do_not_optimize(newFromPr(files))
-  })
-
-  bench('suggestion (1k)', function* () {
-    const files = createFiles(1000)
-    yield () => do_not_optimize(suggestion(files))
-  })
+  bench('old (1k)', () => do_not_optimize(old(files1k)))
+  bench('newFromPr (1k)', () => do_not_optimize(newFromPr(files1k)))
+  bench('suggestion (1k)', () => do_not_optimize(suggestion(files1k)))
 })
 
 summary(() => {
-  bench('old (10k)', function* () {
-    const files = createFiles(10000)
-    yield () => do_not_optimize(old(files))
-  })
-
-  bench('newFromPr (10k)', function* () {
-    const files = createFiles(10000)
-    yield () => do_not_optimize(newFromPr(files))
-  })
-
-  bench('suggestion (10k)', function* () {
-    const files = createFiles(10000)
-    yield () => do_not_optimize(suggestion(files))
-  })
+  bench('old (10k)', () => do_not_optimize(old(files10k)))
+  bench('newFromPr (10k)', () => do_not_optimize(newFromPr(files10k)))
+  bench('suggestion (10k)', () => do_not_optimize(suggestion(files10k)))
 })
 
 summary(() => {
-  bench('old (100k)', function* () {
-    const files = createFiles(100000)
-    yield () => do_not_optimize(old(files))
-  })
-
-  bench('newFromPr (100k)', function* () {
-    const files = createFiles(100000)
-    yield () => do_not_optimize(newFromPr(files))
-  })
-
-  bench('suggestion (100k)', function* () {
-    const files = createFiles(100000)
-    yield () => do_not_optimize(suggestion(files))
-  })
+  bench('old (100k)', () => do_not_optimize(old(files100k)))
+  bench('newFromPr (100k)', () => do_not_optimize(newFromPr(files100k)))
+  bench('suggestion (100k)', () => do_not_optimize(suggestion(files100k)))
 })
 
 await run()
